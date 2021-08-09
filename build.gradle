@@ -8,9 +8,20 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
-    compile "org.nd4j:nd4j-native-platform:1.0.0-beta3"
+    compile "org.nd4j:nd4j-native-platform:1.0.0-beta7"
+    compile "org.deeplearning4j:deeplearning4j-core:1.0.0-beta7"
+    compile "com.google.guava:guava:30+"
     compile group: 'com.github.wendykierp', name: 'JTransforms', version: '3.1'
+    compile group: 'org.javatuples', name: 'javatuples', version: '1.2'
 }
+
+jar {
+    manifest {
+        attributes "Main-Class": "MatrixProfileTest"
+        attributes "Class-Path": configurations.compile.collect { it.absolutePath }.join(" ")
+    }
+}
+
 
 test {
     useJUnit {
@@ -49,7 +60,7 @@ artifacts {
 
 group = "io.github.ensozos"
 archivesBaseName = "matrix-profile"
-version '0.0.3'
+version '0.0.3.1'
 
 
 // Build, sign, and upload

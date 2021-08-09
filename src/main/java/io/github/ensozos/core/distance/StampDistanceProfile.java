@@ -20,7 +20,8 @@ public class StampDistanceProfile implements DistanceProfile {
 
     @Override
     public INDArray getDistanceProfile(INDArray tsA, INDArray tsB, int index, int w) {
-        INDArray query = tsA.get(NDArrayIndex.interval(index, index + w));
+
+        INDArray query = tsA.get(NDArrayIndex.point(0), NDArrayIndex.interval(index, index + w));
 
         return massAlgo.mass(tsB, query);
     }

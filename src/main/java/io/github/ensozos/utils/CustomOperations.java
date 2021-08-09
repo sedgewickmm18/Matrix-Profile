@@ -7,6 +7,7 @@ import org.nd4j.linalg.indexing.BooleanIndexing;
 import org.nd4j.linalg.indexing.INDArrayIndex;
 import org.nd4j.linalg.indexing.NDArrayIndex;
 import org.nd4j.linalg.indexing.conditions.Condition;
+import org.nd4j.linalg.indexing.conditions.Not;
 import org.nd4j.linalg.indexing.conditions.Conditions;
 
 
@@ -185,18 +186,8 @@ public class CustomOperations {
 
     public static INDArray booleanOp(INDArray arr, Condition condition) {
         INDArray dup = arr.dup();
-        BooleanIndexing.applyWhere(dup, condition,
-                new Function<Number, Number>() {
-                    @Override
-                    public Number apply(Number number) {
-                        return 1.0;
-                    }
-                }, new Function<Number, Number>() {
-                    @Override
-                    public Number apply(Number number) {
-                        return 0.0;
-                    }
-                });
+        BooleanIndexing.replaceWhere(dup, 1.0, condition);
+        BooleanIndexing.replaceWhere(dup, 0.0, new Not(condition));
         return dup;
     }
 

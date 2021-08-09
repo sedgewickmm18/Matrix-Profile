@@ -2,7 +2,8 @@ package io.github.ensozos.core;
 
 import io.github.ensozos.core.order.Order;
 import io.github.ensozos.utils.CustomOperations;
-import javafx.util.Pair;
+import org.javatuples.Pair;
+
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
 import org.nd4j.linalg.indexing.INDArrayIndex;
@@ -120,9 +121,12 @@ class MatrixProfileCalculator {
             INDArray distanceProfile = dp.getDistanceProfile(timeSeriesA, timeSeriesB, index, window);
             INDArray distanceProfileIndex = dp.getDistanceProfileIndex(n, index, window);
 
+            // operate on time series length - window + 1)
+            long nwin = Math.min(distanceProfile.shape()[0], n);
+
             if (trivialMatch) {
                 INDArrayIndex[] indices = new INDArrayIndex[]{
-                        NDArrayIndex.interval(Math.max(0, index - window / 2), Math.min(index + window / 2 + 1, n))
+                        NDArrayIndex.interval(Math.max(0, index - window / 2), Math.min(index + window / 2 + 1, nwin))
                 };
                 distanceProfile.put(indices, Double.POSITIVE_INFINITY);
             }

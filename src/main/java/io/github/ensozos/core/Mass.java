@@ -73,7 +73,7 @@ public class Mass {
         }
 
         INDArray dot = Nd4j.create(realDot, new int[]{1, realDot.length});
-        INDArray divRes = dot.get(NDArrayIndex.interval(m - 1, dot.length())).div(stdv);
+        INDArray divRes = dot.get(NDArrayIndex.point(0), NDArrayIndex.interval(m - 1, dot.length())).div(stdv);
         INDArray res = divRes.neg().add(m).mul(2);
         BooleanIndexing.replaceWhere(res, EPS, Conditions.lessThanOrEqual(EPS));
         return sqrt(res);

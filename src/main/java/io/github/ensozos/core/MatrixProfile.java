@@ -5,10 +5,9 @@ import io.github.ensozos.core.distance.DistanceProfileFactory;
 import io.github.ensozos.core.order.LinearOrder;
 import io.github.ensozos.core.order.Order;
 import io.github.ensozos.core.order.RandomOrder;
-import javafx.util.Pair;
+import org.javatuples.Pair;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import java.util.Random;
-
 
 /**
  *  Class for matrix profile computation based on Yeh, Chin-Chia Michael Zhu, Yan Ulanova, Liudmila Begum,
