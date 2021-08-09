@@ -62,14 +62,14 @@ You can pull Matrix Profile library from the central maven repository, just add 
 <dependency>
    <groupId>io.github.ensozos</groupId>
    <artifactId>matrix-profile</artifactId>
-   <version>0.0.3</version>
+   <version>0.0.3.1</version>
 </dependency>
 ```
 
 For gradle users add this to **build.gradle**:
 
 ```xml
-compile 'io.github.ensozos:matrix-profile:0.0.3'
+compile 'io.github.ensozos:matrix-profile:0.0.3.1'
 ```
 
 Example
@@ -97,6 +97,10 @@ For Matrix Profile distance you need to create MPdistance object:
 
   mpDist.getMPdistance(target, query, window);
 ```
+
+There is an example in `src/main/java/MatrixProfileTest.java` that can be run with
+
+`java -jar build/libs/matrix-profile-0.0.3.1.jar  MatrixProfileTest.main`
 
 ## Other projects with Matrix Profile
 
