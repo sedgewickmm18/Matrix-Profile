@@ -1,6 +1,6 @@
 package io.github.ensozos.core;
 
-import javafx.util.Pair;
+import org.javatuples.Pair;
 import org.junit.Test;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;

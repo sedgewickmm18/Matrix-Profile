@@ -1,6 +1,6 @@
 package io.github.ensozos.testsupport;
 
-import javafx.util.Pair;
+import org.javatuples.Pair;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import java.io.*;
 import java.net.URL;
@@ -48,8 +48,8 @@ public class CsvExport {
             throw new IllegalStateException("Could not create " + filename);
         }
 
-        printSeries(stream, result.getKey());
-        printSeries(stream, result.getValue());
+        printSeries(stream, result.getValue0());
+        printSeries(stream, result.getValue1());
         stream.close();
     }
 
@@ -73,8 +73,8 @@ public class CsvExport {
         stream.println("row,series,MP,MPindx");  // csv header row
         for (int i = 0; i < target.columns(); i++) {
             stream.print(i + "," + target.getDouble(0, i) + ",");
-            if (i < expResult.getKey().columns()) {
-                stream.println(expResult.getKey().getDouble(0, i) + "," + expResult.getValue().getDouble(0,i));
+            if (i < expResult.getValue0().columns()) {
+                stream.println(expResult.getValue0().getDouble(0, i) + "," + expResult.getValue1().getDouble(0,i));
             } else {
                 stream.println(",");
             }

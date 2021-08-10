@@ -2,7 +2,7 @@ package io.github.ensozos.core;
 
 import io.github.ensozos.testsupport.CsvExport;
 import io.github.ensozos.testsupport.FileUtil;
-import javafx.util.Pair;
+import org.javatuples.Pair;
 import org.junit.Test;
 import org.nd4j.linalg.api.ndarray.INDArray;
 
